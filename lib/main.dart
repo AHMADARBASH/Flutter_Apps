@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './button.dart';
+import './dark_screen.dart';
+import './light_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,95 +14,25 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isElevated = true;
-
   @override
-  build(context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData(
+            colorScheme: ColorScheme(
+                background: Colors.grey[300]!,
+                error: Colors.red,
+                onPrimary: Colors.white,
+                onSecondary: Colors.white,
+                primaryVariant: Colors.grey[300]!,
+                secondaryVariant: Colors.grey[300]!,
+                onError: Colors.red,
+                onSurface: Colors.white,
+                primary: Colors.white,
+                secondary: Colors.white,
+                surface: Colors.white,
+                brightness: Brightness.light,
+                onBackground: Colors.white)),
         debugShowCheckedModeBanner: false,
-        home: SafeArea(
-          child: Scaffold(
-              backgroundColor: Colors.grey[300],
-              body: Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isElevated = !isElevated;
-                      });
-                    },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      width: 250,
-                      height: 250,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(30)),
-                          color: Colors.grey[300],
-                          boxShadow: isElevated
-                              ? [
-                                  BoxShadow(
-                                      color: Colors.grey[100]!,
-                                      spreadRadius: 1.5,
-                                      blurRadius: 10,
-                                      offset: const Offset(7, 4)),
-                                  BoxShadow(
-                                      color: Colors.grey[500]!,
-                                      spreadRadius: 1.5,
-                                      blurRadius: 10,
-                                      offset: const Offset(-7, -7)),
-                                ]
-                              : null),
-                      child: isElevated
-                          ? const Icon(
-                              Icons.arrow_downward,
-                              color: Colors.blue,
-                              size: 100,
-                            )
-                          : null,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isElevated = !isElevated;
-                      });
-                    },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 100),
-                      width: 250,
-                      height: 250,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(30)),
-                          color: Colors.grey[300],
-                          boxShadow: !isElevated
-                              ? [
-                                  BoxShadow(
-                                      color: Colors.grey[100]!,
-                                      spreadRadius: 1.5,
-                                      blurRadius: 10,
-                                      offset: const Offset(7, 4)),
-                                  BoxShadow(
-                                      color: Colors.grey[500]!,
-                                      spreadRadius: 1.5,
-                                      blurRadius: 10,
-                                      offset: const Offset(-7, -7)),
-                                ]
-                              : null),
-                      child: !isElevated
-                          ? const Icon(
-                              Icons.arrow_upward,
-                              color: Colors.blue,
-                              size: 100,
-                            )
-                          : null,
-                    ),
-                  ),
-                ],
-              ))),
-        ));
+        home: const DarkScreen());
   }
 }
