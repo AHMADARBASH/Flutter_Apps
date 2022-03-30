@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Clock(),
     );
   }
@@ -31,7 +32,7 @@ class Clock extends StatelessWidget {
     return Scaffold(
         backgroundColor: fourthcolor,
         appBar: AppBar(
-          title: const Text('Flutter Clock'),
+          title: const Center(child: Text('Flutter Clock')),
           backgroundColor: firstcolor,
         ),
         body: Center(
@@ -46,6 +47,12 @@ class Clock extends StatelessWidget {
                     children: [
                       //Hours Angle
                       StreamBuilder<dynamic>(
+                          initialData: const {
+                            'hours': 0,
+                            'minutes': 0,
+                            'seconds': 0,
+                            'mesconds': 0,
+                          },
                           stream: seqAsyncValues(),
                           builder: (context, data) {
                             {
