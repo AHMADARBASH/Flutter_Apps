@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -15,13 +14,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyClock(),
+      home: DialogTest(),
     );
   }
 }
 
-class MyClock extends StatelessWidget {
-  const MyClock({Key? key}) : super(key: key);
+class DialogTest extends StatelessWidget {
+  const DialogTest({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +58,7 @@ class MyClock extends StatelessWidget {
                       });
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               ElevatedButton(
@@ -83,7 +82,7 @@ class MyClock extends StatelessWidget {
                       });
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               ElevatedButton(
